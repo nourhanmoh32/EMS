@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Gulzar&family=Mirza:wght@600&family=Reem+Kufi:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&family=Qahiri&display=swap');
+
+*{
+    direction: rtl;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'amiri', 'cursive';
+}
+/* ---------------------- */
+
+/* 1- sidebar  */
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+}
+
+#sidebar {
+    width: 70px;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #009973;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+#sidebar.expand {
+    width: 300px;
+    min-width: 300px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo img {
+    margin: 10px 0;
+    height: 50px;
+    width: 110px;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    font-size: 21px;
+    color: #fff;
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+/* background hover for links */
+#sidebar ul li a.sidebar-link:hover {
+    color: #009973;
+    font-weight: bold;
+    background-color: #fff;
+    padding-right: 6px;
+    transition: .3s;
+    border-radius: 0px 30px 30px 0px;
+}
+#sidebar ul li a span:focus {
+    color: #009973;
+    font-weight: bold;
+    background-color: #fff;
+    padding-right: 6px;
+    transition: 0s;
+    border-radius: 0px 30px 30px 0px;
+}
+#sidebar .sidebar-footer .sidebar-link:hover{
+    color: #2f3e46f5;
+}
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+/* ------------------------------------------------------------- */
+
+/* 2- holiday */
+.all-cards {
+    margin-left: 10px; /* Adjusted to account for right sidebar */
+    padding-top: 10px; 
+    transition: margin-right 0.25s ease-in-out;
+    flex: 1;
+    margin-right: 70px; /* Margin for the collapsed sidebar */
+    overflow-y: auto; 
+}
+#sidebar.expand ~ .all-cards {
+    margin-right: 300px; /* Adjust margin for the expanded sidebar */
+}
+/* Media queries for responsiveness hol with sidebar */
+@media screen and (max-width: 768px) {
+    #sidebar.expand ~ .all-cards {
+        margin-right: 300px; 
+    }
+
+    .all-cards {
+        margin-right: 70px; /* Ensure margin is correct for smaller screens */
+    }
+}
+.all-cards .card {
+    display: flex;
+    position: relative;
+    margin: 65px 30px;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.281);
+    border-radius: 20px;
+    box-shadow: 3px 2px 2px rgba(177, 173, 173, 0.623);
+    background-color: #ece5e5;
+    background-size: cover;
+}
+/* hol image */
+.all-cards .card .hol-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -65px;
+}
+.all-cards .card .hol-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    border-radius: inherit;
+}
+/* hol title & label"bottom space" */
+.all-cards .card .card-body .card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #009973;
+}
+.all-cards .card .card-body .hol-text .label {
+    font-size: 20px;
+    margin-bottom: 7px;
+    margin-top: 9px;
+    color: #777;
+}
+.all-cards .card .card-body .hol-text .date-div,
+.all-cards .card .card-body .hol-text .reason-div,
+.all-cards .card .card-body .hol-text .type-div {
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #f5f8f3;
+    border-radius: 5px;
+}
+/* hol buttons */
+.hol-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+.button {
+    font-size: 15px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin: 0 15px; /* Added margin to increase space between buttons */
+}
+.button:hover {
+    background-color: #45a049;
+}
+.button-cancel {
+    font-size: 15px;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.button-cancel:hover {
+    background-color: #c82333;
+}
